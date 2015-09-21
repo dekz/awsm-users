@@ -1,0 +1,17 @@
+{
+  "name": "users",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "license": "",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/"
+  },
+  "keywords": [],
+  "devDependencies": {},
+  "dependencies": {
+    "bluebird": "^2.10.0",
+    "dotenv": "^1.2.0"
+  }
+}

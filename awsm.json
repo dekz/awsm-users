@@ -1,0 +1,29 @@
+{
+  "name": "users",
+  "version": "0.0.1",
+  "location": "https://github.com/...",
+  "author": "",
+  "description": "",
+  "resources": {
+    "cloudFormation": {
+      "LambdaIamPolicyDocumentStatements": [],
+      "ApiGatewayIamPolicyDocumentStatements": [],
+      "Resources": {
+        "DynamoDB": {
+          "Type" : "AWS::DynamoDB::Table",
+          "KeySchema" : {
+            "HashKeyElement": {
+              "AttributeName": {"Ref" : "HashKeyElementName"},
+              "AttributeType": {"Ref" : "HashKeyElementType"}
+            }
+          },
+          "ProvisionedThroughput" : {
+            "ReadCapacityUnits":  { "Ref" : "ReadCapacityUnits"},
+            "WriteCapacityUnits": { "Ref" : "WriteCapacityUnits"}
+          },
+          "TableName": "jaws-users"
+        }
+      }
+    }
+  }
+}
