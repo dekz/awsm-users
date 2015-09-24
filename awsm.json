@@ -14,7 +14,7 @@
            "Resource": {
              "Fn::Join": [
                ":",
-               [ "arn:aws:dynamodb", { "Ref": "AWS::Region" }, "*:*", "table/jaws-users" ]
+               [ "arn:aws:dynamodb", { "Ref": "AWS::Region" }, "*", "table/jaws-users" ]
              ]
            }
          }
