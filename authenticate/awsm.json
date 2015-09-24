@@ -27,7 +27,7 @@
     "cloudFormation": {
       "Type": "AWS",
       "Path": "users/authenticate",
-      "Method": "GET",
+      "Method": "POST",
       "AuthorizationType": "none",
       "ApiKeyRequired": false,
       "RequestTemplates": {},

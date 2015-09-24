@@ -27,7 +27,7 @@
     "cloudFormation": {
       "Type": "AWS",
       "Path": "users/create",
-      "Method": "GET",
+      "Method": "POST",
       "AuthorizationType": "none",
       "ApiKeyRequired": false,
       "RequestTemplates": {},
