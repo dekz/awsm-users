@@ -6,8 +6,19 @@
   "description": "",
   "resources": {
     "cloudFormation": {
-      "LambdaIamPolicyDocumentStatements": [],
       "ApiGatewayIamPolicyDocumentStatements": [],
+      "LambdaIamPolicyDocumentStatements": [
+         {
+           "Effect": "Allow",
+           "Action": [ "*" ],
+           "Resource": {
+             "Fn::Join": [
+               ":",
+               [ "arn:aws:dynamodb", { "Ref": "AWS::Region" }, "*:*", "table/jaws-users" ]
+             ]
+           }
+         }
+      ],
       "Resources": {
         "DynamoDB": {
           "Type" : "AWS::DynamoDB::Table",
