@@ -12,12 +12,18 @@
         "DynamoDB": {
           "Type" : "AWS::DynamoDB::Table",
           "Properties": {
-            "KeySchema" : {
-              "HashKeyElement": {
-                "AttributeName": {"Ref" : "HashKeyElementName"},
-                "AttributeType": {"Ref" : "HashKeyElementType"}
+            "AttributeDefinitions": [
+              {
+                "AttributeName": "email",
+                "AttributeType": "S"
               }
-            },
+            ],
+            "KeySchema" : [
+              {
+                "AttributeName": "email",
+                "KeyType": "HASH"
+              }
+            ],
             "ProvisionedThroughput" : {
               "ReadCapacityUnits":  { "Ref" : "ReadCapacityUnits"},
               "WriteCapacityUnits": { "Ref" : "WriteCapacityUnits"}
