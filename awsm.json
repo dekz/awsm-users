@@ -11,17 +11,19 @@
       "Resources": {
         "DynamoDB": {
           "Type" : "AWS::DynamoDB::Table",
-          "KeySchema" : {
-            "HashKeyElement": {
-              "AttributeName": {"Ref" : "HashKeyElementName"},
-              "AttributeType": {"Ref" : "HashKeyElementType"}
-            }
-          },
-          "ProvisionedThroughput" : {
-            "ReadCapacityUnits":  { "Ref" : "ReadCapacityUnits"},
-            "WriteCapacityUnits": { "Ref" : "WriteCapacityUnits"}
-          },
-          "TableName": "jaws-users"
+          "Properties": {
+            "KeySchema" : {
+              "HashKeyElement": {
+                "AttributeName": {"Ref" : "HashKeyElementName"},
+                "AttributeType": {"Ref" : "HashKeyElementType"}
+              }
+            },
+            "ProvisionedThroughput" : {
+              "ReadCapacityUnits":  { "Ref" : "ReadCapacityUnits"},
+              "WriteCapacityUnits": { "Ref" : "WriteCapacityUnits"}
+            },
+            "TableName": "jaws-users"
+          }
         }
       }
     }
