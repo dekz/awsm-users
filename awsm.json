@@ -36,8 +36,8 @@
               }
             ],
             "ProvisionedThroughput" : {
-              "ReadCapacityUnits":  { "Ref" : "ReadCapacityUnits"},
-              "WriteCapacityUnits": { "Ref" : "WriteCapacityUnits"}
+              "ReadCapacityUnits":  { "Ref" : "aaDefaultDynamoRWThroughput" },
+              "WriteCapacityUnits": { "Ref" : "aaDefaultDynamoRWThroughput" }
             },
             "TableName": "jaws-users"
           }
