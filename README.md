@@ -23,3 +23,13 @@ curl "<your endpoint>/users/list"
 This will install the awsm modules into your project and save the resource creations into your cloudformation.  
 
 DynamoDB Table Name: `jaws-users`
+
+
+## Can I use this project in Production
+No it is not secure.
+
+## TODO
+* [x] Create Users
+* [x] List Users
+* [ ] Authenticate Users
+* [ ] Delete Users
