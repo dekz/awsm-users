@@ -1,37 +1,71 @@
-/**
- * AWS Module: Action: Modularized Code
- */
-
-var Promise = require("bluebird");
-var AWS = require('aws-sdk');
-var crypto = require('crypto');
-var util = require('util');
+var Promise  = require('bluebird'),
+    AWS      = require('aws-sdk'),
+    bcryptjs = require('bcryptjs'),
+    moment   = require('moment'),
+    uuid     = require('node-uuid'),
+    debug    = require('debug')('awsm-users');
 
 var dynamodb = new AWS.DynamoDB();
 Promise.promisifyAll(Object.getPrototypeOf(dynamodb));
 
-// Export For Lambda Handler
 module.exports.run = function(event, context, cb) {
-  action(event).then(function(result) {
-    console.log('Created a new user');
-    cb(null, result);
-  }).catch(function(error) {
-    console.log('Failed to create a new user');
-    cb(error, null);
-  });
+  return action(event)
+    .then(function(result) {
+      debug('Success: Created a user');
+      cb(null, result);
+    })
+    .error(function(error) {
+      debug('Failed: %s', JSON.stringify(error));
+      cb(error, null);
+    });
 };
 
-var storeUser = function(user) {
-  return dynamodb.putItemAsync({
-    TableName: 'jaws-users',
-    Item: {
-      email:    { S: user.email },
-      password: { S: user.password },
-    },
-    ConditionExpression: 'attribute_not_exists (email)'
+var validateInput = function(data) {
+  return new Promise(function(resolve, reject) {
+    resolve(data);
   });
 }
 
-var action = function(event, cb) {
-  return storeUser(event);
+var secureUser = function(user) {
+  return new Promise(function(resolve, reject) {
+    user.salt     = bcryptjs.genSaltSync(10);
+    user.password = bcryptjs.hashSync(user.password, user.salt);
+    resolve(user);
+  });
+}
+
+var createUser = function(data) {
+  return new Promise(function(resolve, reject) {
+    var user = {
+      id:       'u_' + uuid.v1(),
+      email:    data.email,
+      password: data.password,
+      created:  moment().unix().toString(),
+      updated:  moment().unix().toString(),
+    }
+    resolve(user);
+  });
+}
+
+var storeUser = function(user) {
+  debug('Saving ' + JSON.stringify(user));
+  return dynamodb.putItemAsync({
+    TableName: 'jaws-users',
+    Item: {
+      id:       { S: user.id },
+      email:    { S: user.email },
+      password: { S: user.password },
+      salt:     { S: user.salt },
+      created:  { S: user.created },
+      updated:  { S: user.updated },
+    },
+    ConditionExpression: 'attribute_not_exists (id)'
+  });
+}
+
+var action = function(event) {
+  return validateInput(event)
+    .then(createUser)
+    .then(secureUser)
+    .then(storeUser);
 };
