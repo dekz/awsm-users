@@ -5,7 +5,7 @@ var Promise = require("bluebird"),
 var dynamodb = new AWS.DynamoDB();
 Promise.promisifyAll(Object.getPrototypeOf(dynamodb));
 
-var verify = require('lib/verify').verify
+var verify = require('../lib/verify').verify
 
 module.exports.run = function(event, context, cb) {
   return verify(event.jwt)
