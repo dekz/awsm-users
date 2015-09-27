@@ -20,12 +20,23 @@ module.exports.run = function(event, context, cb) {
 };
 
 var getUser = function(data) {
-  return [data, dynamodb.getItemAsync({
-    TableName: 'jaws-users',
-    Key: {
-      email: { S: data.email }
-    }
-  })];
+  return new Promise(function(resolve, reject) {
+    dynamodb.getItemAsync ({
+      TableName: 'jaws-users',
+      Key: {
+        email: { S: data.email }
+      }
+    }).then(function(result) {
+      if (result && 'Item' in result) {
+        var user = {
+          id:       result.Item.id.S,
+          email:    result.Item.email.S,
+          password: result.Item.password.S
+        }
+        resolve([data, user]);
+      } else { reject(data) }
+    });
+  });
 }
 
 var authenticate = function(data, user) {
@@ -33,7 +44,6 @@ var authenticate = function(data, user) {
       data = data[0];
   return new Promise(function(resolve, reject) {
     if (bcryptjs.compareSync(data.password, user.password)) {
-      debug('successful auth compare');
       resolve(user);
     } else {
       debug('failed auth compare');
