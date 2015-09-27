@@ -1,6 +1,6 @@
 {
   "lambda": {
-    "envVars": ["JWT_SECRET", "JWT_ISSUER"],
+    "envVars": ["JWT_SECRET", "JWT_ISSUER", "USERS_TABLE"],
     "deploy": false,
     "package": {
       "optimize": {

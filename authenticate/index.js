@@ -22,7 +22,7 @@ module.exports.run = function(event, context, cb) {
 var getUser = function(data) {
   return new Promise(function(resolve, reject) {
     dynamodb.getItemAsync ({
-      TableName: 'jaws-users',
+      TableName: process.env.USERS_TABLE,
       Key: {
         email: { S: data.email }
       }

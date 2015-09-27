@@ -1,6 +1,6 @@
 {
   "lambda": {
-    "envVars": [],
+    "envVars": ["USERS_TABLE"],
     "deploy": true,
     "package": {
       "optimize": {

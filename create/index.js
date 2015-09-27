@@ -15,7 +15,7 @@ module.exports.run = function(event, context, cb) {
       cb(null, result);
     })
     .error(function(error) {
-      debug('Failed: %s', JSON.stringify(error));
+      debug('Create User Failed: %s', JSON.stringify(error));
       cb(error, null);
     });
 };
@@ -50,7 +50,7 @@ var createUser = function(data) {
 var storeUser = function(user) {
   debug('Saving ' + JSON.stringify(user));
   return dynamodb.putItemAsync({
-    TableName: 'jaws-users',
+    TableName: process.env.USERS_TABLE,
     Item: {
       id:       { S: user.id },
       email:    { S: user.email },
