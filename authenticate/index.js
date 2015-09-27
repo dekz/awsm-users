@@ -55,8 +55,8 @@ var createToken = function(user) {
   });
 }
 
-module.exports.action = function(data) {
-  return getUser(data)
+var action = function(event) {
+  return getUser(event)
     .then(authenticate)
     .then(createToken);
 };
