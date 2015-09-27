@@ -7,6 +7,7 @@ var Promise  = require('bluebird'),
 var dynamodb = new AWS.DynamoDB();
 Promise.promisifyAll(Object.getPrototypeOf(dynamodb));
 
+
 module.exports.run = function(event, context, cb) {
   return action(event)
     .then(function(result) {
@@ -58,7 +59,7 @@ var createToken = function(user) {
       uid: user.id,
     }, process.env.JWT_SECRET, {
       issuer: process.env.JWT_ISSUER,
-      expiresInSeconds: 10
+      expiresInMinutes: 10
     });
 
     resolve(token);

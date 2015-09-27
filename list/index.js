@@ -5,8 +5,11 @@ var Promise = require("bluebird"),
 var dynamodb = new AWS.DynamoDB();
 Promise.promisifyAll(Object.getPrototypeOf(dynamodb));
 
+var verify = require('../lib/verify').verify
+
 module.exports.run = function(event, context, cb) {
-  action(event)
+  return verify(event.jwt)
+    .then(action)
     .then(function(result) {
       cb(null, result);
     })
@@ -16,10 +19,10 @@ module.exports.run = function(event, context, cb) {
     });
 };
 
-var listUsers = function(user) {
+var listUsers = function() {
   return dynamodb.scanAsync({ TableName: process.env.USERS_TABLE });
 }
 
 var action = function(event) {
-  return listUsers(event);
+  return listUsers();
 };
