@@ -10,7 +10,9 @@
         "exclude": [
           "aws-sdk"
         ],
-        "includePaths": []
+        "includePaths": [
+          "aws_modules/users/lib"
+        ]
       },
       "excludePatterns": []
     },
