@@ -3,8 +3,7 @@ var verify = require('./lib/verify.js').verify;
 // relies on receiving an event with an auth object
 // {auth: {user: <username>, token: <token>}, ….}
 
-
-module.exports.verify = function (Middleware) {
+module.exports.authorize = function (Middleware) {
 	if (!Middleware) { return }
 	
 	Middleware.use(function (event, context, next){
