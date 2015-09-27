@@ -32,7 +32,9 @@
       "Method": "GET",
       "AuthorizationType": "none",
       "ApiKeyRequired": false,
-      "RequestTemplates": {},
+      "RequestTemplates": {
+        "application/json": "{\"Authorization\":\"$input.params('Authorization')\"}"
+      },
       "RequestParameters": {},
       "Responses": {
         "400": {

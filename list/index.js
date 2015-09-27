@@ -8,7 +8,7 @@ Promise.promisifyAll(Object.getPrototypeOf(dynamodb));
 var verify = require('../lib/verify').verify
 
 module.exports.run = function(event, context, cb) {
-  return verify(event.jwt)
+  return verify(event.Authorization)
     .then(action)
     .then(function(result) {
       cb(null, result);
