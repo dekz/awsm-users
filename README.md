@@ -1,9 +1,12 @@
 ## Awsm Users
+AWSM Users is an example [awsm](https://github.com/awsm-org/awsm) module around the lifecycle of authentication.
 
-Small example framework for a [awsm](https://github.com/awsm-org/awsm) module.
-
-Using a number of Lambdas for each operation alongside DynamoDB, this module will create and authenticate users.
-
+### What does this project demonstatrate?
+* Custom API endpoint request templates.
+* Additional Cloudformation Resources (DynamoDB) and IAM roles
+* Shared library code in `lib`
+* [JWT](http://jwt.io/)
+* Other HTTP Api endpoint methods
 
 ## Usage
 
