@@ -39,6 +39,42 @@ This will install the awsm modules into your project and save the resource creat
 
 DynamoDB Table Name: `jaws-users`
 
+## Environment Variables
+You will need to populate the environment variables provided by the `jaws env list` command, here is an example:
+```
+~/t/j/myproject ❯❯❯ jaws env list dev us-east-1
+JAWS: Getting ENV file from S3 bucket: jaws-project in us-east-1
+JAWS: ENV vars for stage dev:
+JAWS: ------------------------------
+JAWS: us-east-1
+JAWS: ------------------------------
+JAWS_STAGE=dev
+JAWS_DATA_MODEL_STAGE=dev
+USERS_TABLE=jaws-users
+JWT_SECRET=abcd
+JWT_ISSUER=jacob
+
+
+JAWS: awsm.json:lambda.envVars and regions where they are used (red means NOT defined in region):
+JAWS: ------------------------------
+JAWS: USERS_TABLE
+JAWS: ------------------------------
+JAWS: aws mods using: users/create/awsm.json,users/authenticate/awsm.json,users/list/awsm.json
+JAWS: regions: us-east-1
+
+JAWS: ------------------------------
+JAWS: JWT_SECRET
+JAWS: ------------------------------
+JAWS: aws mods using: users/authenticate/awsm.json
+JAWS: regions: us-east-1
+
+JAWS: ------------------------------
+JAWS: JWT_ISSUER
+JAWS: ------------------------------
+JAWS: aws mods using: users/authenticate/awsm.json
+JAWS: regions: us-east-1
+```
+
 
 ## Can I use this project in Production
 No
