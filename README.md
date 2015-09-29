@@ -37,7 +37,7 @@ curl -H "Authorization: <jwt token>" "<your endpoint>/users/list"
 
 This will install the awsm modules into your project and save the resource creations into your cloudformation.  
 
-DynamoDB Table Name: `jaws-users`
+
 
 ## Environment Variables
 You will need to populate the environment variables provided by the `jaws env list` command, here is an example:
@@ -75,6 +75,7 @@ JAWS: aws mods using: users/authenticate/awsm.json
 JAWS: regions: us-east-1
 ```
 
+USERS_TABLE must be set to: `jaws-users` (for now)
 
 ## Can I use this project in Production
 No
