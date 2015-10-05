@@ -1,7 +1,7 @@
 {
   "lambda": {
     "envVars": ["USERS_TABLE"],
-    "deploy": true,
+    "deploy": false,
     "package": {
       "optimize": {
         "builder": "browserify",
@@ -10,13 +10,13 @@
         "exclude": [
           "aws-sdk"
         ],
-        "includePaths": []
+        "includePaths": [ ]
       },
       "excludePatterns": []
     },
     "cloudFormation": {
       "Description": "",
-      "Handler": "aws_modules/awsm-users/create/handler.handler",
+      "Handler": "aws_modules/awsm-users/list/handler.js",
       "MemorySize": 1024,
       "Runtime": "nodejs",
       "Timeout": 6
@@ -26,11 +26,13 @@
     "deploy": false,
     "cloudFormation": {
       "Type": "AWS",
-      "Path": "users/create",
-      "Method": "POST",
+      "Path": "users/list",
+      "Method": "GET",
       "AuthorizationType": "none",
       "ApiKeyRequired": false,
-      "RequestTemplates": {},
+      "RequestTemplates": {
+        "application/json": "{\"Authorization\":\"$input.params('Authorization')\"}"
+      },
       "RequestParameters": {},
       "Responses": {
         "400": {

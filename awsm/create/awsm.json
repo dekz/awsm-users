@@ -1,7 +1,7 @@
 {
   "lambda": {
-    "envVars": ["JWT_SECRET", "JWT_ISSUER", "USERS_TABLE"],
-    "deploy": false,
+    "envVars": ["USERS_TABLE"],
+    "deploy": true,
     "package": {
       "optimize": {
         "builder": "browserify",
@@ -10,13 +10,13 @@
         "exclude": [
           "aws-sdk"
         ],
-        "includePaths": []
+        "includePaths": [ ]
       },
       "excludePatterns": []
     },
     "cloudFormation": {
       "Description": "",
-      "Handler": "aws_modules/awsm-users/authenticate/handler.handler",
+      "Handler": "aws_modules/awsm-users/create/handler.js",
       "MemorySize": 1024,
       "Runtime": "nodejs",
       "Timeout": 6
@@ -26,7 +26,7 @@
     "deploy": false,
     "cloudFormation": {
       "Type": "AWS",
-      "Path": "users/authenticate",
+      "Path": "users/create",
       "Method": "POST",
       "AuthorizationType": "none",
       "ApiKeyRequired": false,

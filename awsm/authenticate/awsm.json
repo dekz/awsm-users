@@ -1,6 +1,6 @@
 {
   "lambda": {
-    "envVars": ["USERS_TABLE"],
+    "envVars": ["JWT_SECRET", "JWT_ISSUER", "USERS_TABLE"],
     "deploy": false,
     "package": {
       "optimize": {
@@ -16,7 +16,7 @@
     },
     "cloudFormation": {
       "Description": "",
-      "Handler": "aws_modules/awsm-users/list/handler.handler",
+      "Handler": "aws_modules/awsm-users/authenticate/handler.js",
       "MemorySize": 1024,
       "Runtime": "nodejs",
       "Timeout": 6
@@ -26,13 +26,11 @@
     "deploy": false,
     "cloudFormation": {
       "Type": "AWS",
-      "Path": "users/list",
-      "Method": "GET",
+      "Path": "users/authenticate",
+      "Method": "POST",
       "AuthorizationType": "none",
       "ApiKeyRequired": false,
-      "RequestTemplates": {
-        "application/json": "{\"Authorization\":\"$input.params('Authorization')\"}"
-      },
+      "RequestTemplates": {},
       "RequestParameters": {},
       "Responses": {
         "400": {
