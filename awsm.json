@@ -1,9 +1,9 @@
 {
-  "name": "users",
+  "name": "awsm-users",
   "version": "0.0.1",
-  "location": "https://github.com/...",
-  "author": "",
-  "description": "",
+  "location": "https://github.com/dekz/awsm-users",
+  "author": "dekz <jacob@dekz.net>",
+  "description": "Authentication Lifecycle for JAWS",
   "resources": {
     "cloudFormation": {
       "ApiGatewayIamPolicyDocumentStatements": [],
