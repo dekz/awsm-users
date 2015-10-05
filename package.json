@@ -2,11 +2,11 @@
   "name": "users",
   "version": "0.0.1",
   "description": "",
-  "author": "",
+  "author": "dekz",
   "license": "",
   "repository": {
     "type": "git",
-    "url": "git://github.com/"
+    "url": "git://github.com/dekz/awsm-users"
   },
   "keywords": [],
   "devDependencies": {},
@@ -18,5 +18,8 @@
     "jsonwebtoken": "^5.0.5",
     "moment": "^2.10.6",
     "node-uuid": "^1.4.3"
+  },
+  "scripts": {
+    "postinstall" : "jaws postinstall awsm-users npm"
   }
 }
