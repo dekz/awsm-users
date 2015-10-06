@@ -1,6 +1,9 @@
 ## Awsm Users
 AWSM Users is an example [awsm](https://github.com/awsm-org/awsm) module around the lifecycle of authentication.
 
+## Requirements
+Jaws 1.3+
+
 ### What does this project demonstatrate?
 * Custom API endpoint request templates.
 * Additional Cloudformation Resources (DynamoDB) and IAM roles
@@ -10,14 +13,11 @@ AWSM Users is an example [awsm](https://github.com/awsm-org/awsm) module around 
 
 ## Usage
 
-### Asciicast
-[![asciicast](https://asciinema.org/a/1wgq3i552t6229jbc8kdhqoy9.png)](https://asciinema.org/a/1wgq3i552t6229jbc8kdhqoy9)
-
-
 In your JAWS project root directory, run:
 ```
-jaws module install https://github.com/jaws-framework/jaws-core-js
-jaws module install https://github.com/dekz/awsm-users
+npm install --save awsm-users
+npm install
+jaws postinstall awsm-users npm
 jaws deploy resources
 jaws dash
 
