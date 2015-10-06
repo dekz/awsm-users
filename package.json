@@ -18,8 +18,5 @@
     "jsonwebtoken": "^5.0.5",
     "moment": "^2.10.6",
     "node-uuid": "^1.4.3"
-  },
-  "scripts": {
-    "postinstall" : "jaws postinstall awsm-users npm"
   }
 }
