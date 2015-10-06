@@ -8,7 +8,6 @@ module.exports.run = function(event, context, cb) {
       cb(null, result);
     })
     .error(function(error) {
-      debug('List Users Failed: %s', JSON.stringify(error));
       cb(error, null);
     });
 };
