@@ -1,14 +1,14 @@
 {
   "name": "awsm-users",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.0.2",
+  "description": "AWSM module for user authentication",
   "author": "dekz",
-  "license": "",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git://github.com/dekz/awsm-users"
   },
-  "keywords": [],
+  "keywords": ["awsm"],
   "devDependencies": {},
   "dependencies": {
     "bcryptjs": "^2.3.0",
