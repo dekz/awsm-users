@@ -1,6 +1,6 @@
 {
   "name": "awsm-users",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "AWSM module for user authentication",
   "author": "dekz",
   "license": "MIT",
