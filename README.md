@@ -88,14 +88,14 @@ No
 
 ## Putting a lambda behind an authentication wall
 
-Your API endpoint must pull out the Autheorization parameter and pass that through. Here is an example of a Request Template which pulls out the Auth token and sets it onto the `event`. See [list awsm.json](https://github.com/dekz/awsm-users/blob/master/list/awsm.json#L36)  
+Your API endpoint must pull out the Autheorization parameter and pass that through. Here is an example of a Request Template which pulls out the Auth token and sets it onto the `event`. See [list awsm.json](https://github.com/dekz/awsm-users/blob/master/awsm/list/awsm.json#L33)  
 ```json
       "RequestTemplates": {
         "application/json": "{\"Authorization\":\"$input.params('Authorization')\"}"
       }
 ```
 
-Verify before doing any work in your Lambda, See [list lambda](https://github.com/dekz/awsm-users/blob/master/list/index.js#L10) as an example.  
+Verify before doing any work in your Lambda, See [list lambda](https://github.com/dekz/awsm-users/blob/master/awsm/list/index.js#L5) as an example.  
 ```javascript
 module.exports.run = function(event, context, cb) {
   return verify(event.Authorization)
